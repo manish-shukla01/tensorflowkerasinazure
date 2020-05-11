@@ -24,10 +24,10 @@ ws = Workspace('bd04922c-a444-43dc-892f-74d5090f8a9a', 'mlplayarearg', 'testdepl
 
 model = Model(workspace=ws, name='sentimentanalysisv2')
 
-deployment_config = AciWebservice.deploy_configuration(cpu_cores = 2, memory_gb = 6)
+deployment_config = AciWebservice.deploy_configuration(cpu_cores = 2, memory_gb = 6,auth_enabled=True)
 #deployment_config = LocalWebservice.deploy_configuration(port=8890)
 
-service = Model.deploy(ws, "positiveornegative", [model], inference_config, deployment_config)
+service = Model.deploy(ws, "positiveornegativev2", [model], inference_config, deployment_config, overwrite=True)
 service.wait_for_deployment(show_output = True)
 print(service.state)
 

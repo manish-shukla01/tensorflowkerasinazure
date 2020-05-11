@@ -45,24 +45,19 @@ def run(data):
     try:
         data = json.loads(data)
         sentences = data['sentences']
-        inputdf = pd.DataFrame(sentences,columns=['inputdata'])
-        #print(inputdf)
+
         testsequences = ntokenizer.texts_to_sequences(sentences)
         testpadded = pad_sequences(testsequences, maxlen=40)
         answer = model.predict(testpadded)
-        answerdf = pd.DataFrame(answer, columns=['result'])
-       
-        #print(answerdf)
-        finalans = inputdf.join(answerdf)
-        finalans.index = finalans['inputdata']
-        finalans = finalans.drop(columns=['inputdata'])
-        #print(finalans)
-        #result = {"sentiment":str(answer[0])}
-        return json.dumps(finalans.to_dict())
+        answer = answer.reshape(len(sentences))
+        answer = np.array(answer, dtype=np.str)
+        #print(answer)
+        res = dict(zip(sentences, answer)) 
+        #print(res)
         
-        #return data +
-        # You can return any data type, as long as it is JSON serializable.
-
+        #result = {"sentiment":str(answer[0])}
+        return json.dumps(res)
+        
     except Exception as e:
         error = str(e)
         return error
