@@ -36,11 +36,9 @@ def init():
     with open('./packagefordeployment/tokenizer0421.json') as f:
         data = json.load(f)
         ntokenizer = tf.keras.preprocessing.text.tokenizer_from_json(data)
-    #mappingdata = pd.read_csv('mydata.csv')
-    #mappingbreedtonum = mappingdata[['breed','breednum']]
-    #deduped = mappingbreedtonum.drop_duplicates()
-    #deduped.set_index('breednum', inplace=True)
 
+
+import numpy as np
 def run(data):
     try:
         data = json.loads(data)
@@ -50,13 +48,14 @@ def run(data):
         testpadded = pad_sequences(testsequences, maxlen=40)
         answer = model.predict(testpadded)
         answer = answer.reshape(len(sentences))
-        answer = np.array(answer, dtype=np.str)
+        answer = np.array(answer, dtype = np.str)
         #print(answer)
-        res = dict(zip(sentences, answer)) 
+        #res = dict(zip(sentences, answer)) 
         #print(res)
+        answer = list(answer)
         
         #result = {"sentiment":str(answer[0])}
-        return json.dumps(res)
+        return json.dumps(answer)
         
     except Exception as e:
         error = str(e)
