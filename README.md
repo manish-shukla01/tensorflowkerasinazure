@@ -14,5 +14,5 @@
 2. Save the model to Azure machine learning.
 3. Package the model and its depencies using Azure machine learning to deploy a webservice
 4. Call the service using postman. 
-![postmancall]('./images/sentimentpostmancall.png')
+![postmancall]('https://github.com/manish-shukla01/tensorflowkerasinazure/blob/master/images/sentimentpostmancall.png)
 
