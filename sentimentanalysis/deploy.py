@@ -8,7 +8,7 @@ from azureml.core.webservice import AciWebservice, Webservice, LocalWebservice
 
 sp = ServicePrincipalAuthentication(tenant_id="72f988bf-86f1-41af-91ab-2d7cd011db47", # tenantID
                                     service_principal_id="2faad9e6-8bf9-4e7d-a732-70e3daa5ffd5", # clientId
-                                    service_principal_password="##########") # clientSecret
+                                    service_principal_password="<replace token>") # clientSecret
 
 
 # Create an environment and add conda dependencies to it
