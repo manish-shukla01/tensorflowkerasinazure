@@ -15,7 +15,7 @@ import os
 from azureml.contrib.services.aml_response import AMLResponse
 sp = ServicePrincipalAuthentication(tenant_id="72f988bf-86f1-41af-91ab-2d7cd011db47", # tenantID
                                     service_principal_id="2faad9e6-8bf9-4e7d-a732-70e3daa5ffd5", # clientId
-                                    service_principal_password="c536a902-db8f-4b3c-9774-bd9daf4bcc69") # clientSecret
+                                    service_principal_password="#############") # clientSecret
 
 def init():
     global model
